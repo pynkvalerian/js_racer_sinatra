@@ -1,0 +1,55 @@
+<div class="container">
+  <h1 data-value="<%= 'hello' %>">Javascript Racer</h1>
+
+  <h2>Hello, <%= @player1.name%> and <%= @player2.name%></h2>
+  <p>Take a break, play a game!</p>
+
+    <button id='start'>Start Game</button>
+
+    <h3 data-game-id="<%= session[:game_id]%>">GAME</h3>
+
+    <table class="racer_table">
+      <tr id="player1">
+        <th data-player-id="<%= session[:p1_id]%>"><%= @player1.name %></th>
+        <td class="active"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="player2">
+        <th data-player-id="<%= session[:p2_id] %>"><%= @player2.name %></th>
+        <td class="active"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+    <p id='winner'></p>
+
+
+</div>
+
+

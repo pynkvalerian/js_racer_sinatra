@@ -1,0 +1,16 @@
+
+    <table class="racer_scores">
+        <tr>
+            <th>Scores</th>
+            <th><%= Player.find_name(session[:p1_id])%></th>
+            <th><%= Player.find_name(session[:p2_id])%></th>
+        </tr>
+
+        <% games = Player.games %>
+        <% games.each do |game| %>
+        <tr>
+            <td></td>
+        </tr>
+
+
+    </table>
