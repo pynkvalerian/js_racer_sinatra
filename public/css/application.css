@@ -3,7 +3,23 @@
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+  text-align: center
 }
 th {
-  text-align: left;
+  text-align: center;
+  margin: 20px;
+}
+
+.racer_table {
+  margin: 10px
+}
+
+.racer_table td {
+  background-color: #FFFFCC;
+  height: 50px;
+  width: 50px;
+}
+
+.racer_table td.active {
+  background-color: #4DB8DB;
 }
