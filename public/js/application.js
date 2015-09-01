@@ -13,40 +13,49 @@
     player2Position ++
   };
 
-// DEFINE WINNER
-  var winner = function(){
+//START GAME
+  var start_game = function(){
+    alert("Player 1 press 'q' and Player 2 press 'p' to play!");
+  }
+
+// DEFINE who has won
+  var hasWon = function(){
     if (player1Position === 15){
       var winningPlayerId = $("#player1 th").data('player-id');
       $('#winner').html("Player 1 is the winner!");
+      window.clearInterval(timer);
     }
     else if (player2Position == 15){
       var winningPlayerId = $("#player2 th").data('player-id');
       $('#winner').html("Player 2 is the winner!");
+      window.clearInterval(timer);
     }
 
-    var gameID = $("h3").data('game-id');
+    var gameId = $("h3").data('game-id');
 
     $.ajax({
       type: "POST",
-      url: "/games/" + gameID + "/results",
+      url: "/games/" + gameId + "/results",
       data: { winner_id: winningPlayerId }
-    })
+    });
 
   };
 
-//START GAME
-  var new_game = function(){
-    alert("Player 1 press 'q' and Player 2 press 'p' to play!");
-    $.ajax({
-      type: "GET",
-      url: "/start_game"
-    })
-  }
+// TIMER
+  var counter = 0;
+  var tictac = function(){
+    counter++;
+    $("h3#timer").html(counter + "s");
+  };
+  var timer = undefined;
+
+
 
 $(document).ready(function(){
 
   $('button#start').click(function(){
-    new_game();
+
+    timer = setInterval("tictac()", 1000);
 
     // BIND USER KEY PRESS TO ALLOW GAME PLAY
     $(document).on('keyup', function(keyCode){
@@ -60,13 +69,9 @@ $(document).ready(function(){
         movePlayer2();
       }
 
-    winner();
+    hasWon();
     });
 
-  });
-
-  $('button#reset').click(function(){
-    location.reload();
   });
 
 });

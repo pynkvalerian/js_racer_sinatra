@@ -23,3 +23,10 @@ th {
 .racer_table td.active {
   background-color: #4DB8DB;
 }
+
+.racer_scores th, .racer_scores td {
+  background-color: #FFFFCC;
+  height: 50px;
+  width: 150px;
+  border: 1px solid #FFFF00;
+}

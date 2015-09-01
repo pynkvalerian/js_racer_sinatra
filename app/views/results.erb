@@ -1,16 +1,27 @@
+<div class="container">
+  <h1>Javascript Racer</h1>
+
+  <h2>Hello, <%= @player1.name%> and <%= @player2.name%></h2>
+  <p>Here are your scores!</p>
+
+    <button id='new'><a href="/new">New Game</a></button>
+
+    <h3 data-game-id="<%= @game_id %>">Results</h3>
+
 
     <table class="racer_scores">
         <tr>
-            <th>Scores</th>
-            <th><%= Player.find_name(session[:p1_id])%></th>
-            <th><%= Player.find_name(session[:p2_id])%></th>
+            <th>Total Games Played</th>
+            <th><%= @player1.name %></th>
+            <th><%= @player2.name %></th>
         </tr>
 
-        <% games = Player.games %>
-        <% games.each do |game| %>
         <tr>
-            <td></td>
+            <td><%= @games_played_together.size %></td>
+            <td><%= @p1_win %></td>
+            <td><%= @p2_win %></td>
         </tr>
 
 
     </table>
+</div>
