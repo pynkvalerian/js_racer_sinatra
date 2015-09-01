@@ -17,6 +17,7 @@ GEM
     arel (6.0.3)
     backports (3.6.6)
     builder (3.2.2)
+    byebug (6.0.2)
     daemons (1.2.3)
     diff-lcs (1.2.5)
     eventmachine (1.0.8)
@@ -74,6 +75,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   activesupport
+  byebug
   faker
   pg
   rake

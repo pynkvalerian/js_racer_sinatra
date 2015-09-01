@@ -36,7 +36,7 @@
     $.ajax({
       type: "POST",
       url: "/games/" + gameId + "/results",
-      data: { winner_id: winningPlayerId }
+      data: { winner_id: winningPlayerId, time_completed: counter }
     });
 
   };
@@ -48,8 +48,6 @@
     $("h3#timer").html(counter + "s");
   };
   var timer = undefined;
-
-
 
 $(document).ready(function(){
 

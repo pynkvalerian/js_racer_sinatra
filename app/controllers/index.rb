@@ -46,8 +46,11 @@ end
 
 post '/games/:id/results' do
   winner_id = params[:winner_id]
+  timer = params[:time_completed]
+
   game = Game.find(params[:id])
   game.winner_id = winner_id
+  game.time_completed = timer
   game.save
   redirect to("/games/#{params[:id]}/results")
 end
