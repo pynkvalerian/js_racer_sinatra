@@ -4,9 +4,10 @@
   <h2>Hello, <%= @player1.name%> and <%= @player2.name%></h2>
   <p>Take a break, play a game!</p>
 
+    <button id='home'><a href="/">Home</a></button>
     <button id='start'>Start Game</button>
     <button id='new'><a href="/new">New Game</a></button>
-    <button id='results'><a href="/games/<%= @games_id %>/results">Results</a></button>
+    <button id='results'><a href="/games/<%= @games_id %>/results">View Results</a></button>
 
     <h3 data-game-id="<%= @games_id %>">GAME</h3>
     <h3 id="timer"></h3>

@@ -1,15 +1,18 @@
+# HOME PAGE
 get '/' do
   # Look in app/views/index.erb
   erb :index
 end
 
+# FIND EXISTING PLAYERS OR CREATE NEW PLAYERS
+# CREATE NEW GAME
 post '/play' do
   #CREATE NEW PLAYERS IF DOESNT EXIST IN DATABASE
   player1_name = params[:player1]
   player2_name = params[:player2]
 
-  player1 = Player.find_or_create_by(name: player1_name)
-  player2 = Player.find_or_create_by(name: player2_name)
+  player1 = Player.find_or_create_by(name: player1_name.strip)
+  player2 = Player.find_or_create_by(name: player2_name.strip)
 
   #CREATE NEW GAME WITH ASSOCIATED PLAYERS
   game = Game.create
@@ -25,6 +28,7 @@ post '/play' do
 
 end
 
+# DISPLAY GAME PAGE
 get '/games/:id' do
   @player1 = Player.find(session[:p1_id])
   @player2 = Player.find(session[:p2_id])
@@ -33,6 +37,7 @@ get '/games/:id' do
   erb :game
 end
 
+# CREATE NEW GAME
 get '/new' do
   player1 = Player.find(session[:p1_id])
   player2 = Player.find(session[:p2_id])
@@ -44,6 +49,7 @@ get '/new' do
   redirect to("/games/#{game.id}")
 end
 
+# SUBMIT WINNER ID AND TIME_COMPLETE TO DATABASE
 post '/games/:id/results' do
   winner_id = params[:winner_id]
   timer = params[:time_completed]
@@ -55,6 +61,7 @@ post '/games/:id/results' do
   redirect to("/games/#{params[:id]}/results")
 end
 
+# DISPLAY RESULTS
 get '/games/:id/results' do
   @player1 = Player.find(session[:p1_id])
   @player2 = Player.find(session[:p2_id])
