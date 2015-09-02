@@ -18,27 +18,30 @@
     alert("Player 1 press 'q' and Player 2 press 'p' to play!");
   }
 
-// DEFINE who has won
-  var hasWon = function(){
-    if (player1Position === 15){
-      var winningPlayerId = $("#player1 th").data('player-id');
-      $('#winner').html("Player 1 is the winner!");
-      window.clearInterval(timer);
-    }
-    else if (player2Position == 15){
-      var winningPlayerId = $("#player2 th").data('player-id');
-      $('#winner').html("Player 2 is the winner!");
-      window.clearInterval(timer);
-    }
-
+// SUBMIT WINNER TO DATABASE
+  function submitWinner(winningPlayerId){
     var gameId = $("h3").data('game-id');
-
     $.ajax({
       type: "POST",
       url: "/games/" + gameId + "/results",
       data: { winner_id: winningPlayerId, time_completed: counter }
     });
+  }
 
+// DEFINE WINNER
+  var hasWon = function(){
+    if (player1Position === 15){
+      var winningPlayerId = $("#player1 th").data('player-id');
+      $('#winner').html("Player 1 is the winner!");
+      window.clearInterval(timer);
+      submitWinner(winningPlayerId);
+    }
+    else if (player2Position == 15){
+      var winningPlayerId = $("#player2 th").data('player-id');
+      $('#winner').html("Player 2 is the winner!");
+      window.clearInterval(timer);
+      submitWinner(winningPlayerId);
+    }
   };
 
 // TIMER
@@ -49,6 +52,7 @@
   };
   var timer = undefined;
 
+// DRIVER CODE
 $(document).ready(function(){
 
   $('button#start').click(function(){
@@ -68,11 +72,31 @@ $(document).ready(function(){
       }
 
     hasWon();
+
     });
 
   });
 
 });
+
+// DIFFERENCE BETWEEN VARIABLES AND FUNCTIONS
+
+  // hoisted();
+  // unhoisted();
+
+  // function hoisted(){
+  //   console.log("hoisted")
+  // }
+
+  // var unhoisted = function(){
+  //   console.log("unhoisted")
+  // }
+
+// WHEN DOCUMENT IS RAN, FUNCTION IS READ FIRST (HENCE CAN CALL FUNCTION BEFORE DEFINITION OF FUNCTION)
+// WHEREAS FOR VARIABLES, IT CAN ONLY BE CALLED AFTER THE VARIABLE IS DEFINED.
+
+
+
 
 
 
