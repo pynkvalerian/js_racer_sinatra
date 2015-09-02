@@ -57,7 +57,10 @@ $(document).ready(function(){
 
   $('button#start').click(function(){
 
+<<<<<<< HEAD
     start_game();
+=======
+>>>>>>> c4e03bb5886d103b75d6660665b9fd0a9dca6efb
     timer = setInterval("tictac()", 1000);
 
     // BIND USER KEY PRESS TO ALLOW GAME PLAY
