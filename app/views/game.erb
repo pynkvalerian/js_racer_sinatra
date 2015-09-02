@@ -13,7 +13,8 @@
     <h3 id="timer"></h3>
 
     <table class="racer_table">
-      <tr id="player1">
+      <!-- <tr id="player1">  for application.js-->
+      <tr class="player1" id="<%= session[:p1_id]%>" data-player-id="<%= session[:p1_id]%>">
         <th data-player-id="<%= session[:p1_id]%>"><%= @player1.name %></th>
         <td class="active"></td>
         <td></td>
@@ -31,7 +32,8 @@
         <td></td>
         <td></td>
       </tr>
-      <tr id="player2">
+      <!-- <tr id="player2"> for application.js-->
+      <tr class="player2" id="<%= session[:p2_id]%>" data-player-id="<%= session[:p2_id]%>">
         <th data-player-id="<%= session[:p2_id] %>"><%= @player2.name %></th>
         <td class="active"></td>
         <td></td>
@@ -52,7 +54,6 @@
     </table>
 
     <p id='winner'></p>
-
 
 </div>
 
